@@ -1,0 +1,24 @@
+<div class="backGroundStyling">
+    <div class="loginCard">
+        <div [formGroup]="loginUpForm">
+            <div class="loginImageContainer">
+                <img src="../../assets/asset_4.png"> 
+            </div>
+            <div class="loginForm">
+                    <input class="loginField" pInputText pKeyFilter="int" placeholder="User email" type="text" formControlName="email">
+                    <div class="loginField field p-fluid mt-4">
+                        <p-password  placeholder="User password" formControlName="password" [toggleMask]="true" formControlName="password"></p-password>
+                    </div>
+                    <div class="errorMessage">
+                        <p-messages [(value)]="messages" [enableService]="false"></p-messages>
+                    </div>            
+            </div>
+        </div>
+        <div class="submitButton">
+            <button class="buttonStyle" (click)="submitFormData()">Login</button>
+        </div>
+        <div class="loginFooter">
+            <p>Don't have an account yet? <a routerLink="/sign-up">Create account</a></p>
+        </div>
+    </div>
+</div>

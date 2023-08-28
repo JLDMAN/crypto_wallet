@@ -1,0 +1,65 @@
+.signUpCard{
+    background-color: rgb(255, 255, 255);
+    opacity: 0.9;
+    border-radius: 20px;
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 2%;
+    /* margin-bottom: 2%; */
+}
+
+.dualFielClass{
+    width: 47.5%;
+    margin-top: 5%;
+}
+
+.signUpField{
+    margin-top: 5%;
+    width:90%;
+    margin-left: 5%;
+    border-color: #231f20;
+    background-color: white;
+}
+
+.password{
+    margin-top: 5%;
+    width:90%;
+    margin-left: 5%;
+    border-color: #231f20;
+    background-color: white;
+}
+
+.errorMessage{
+    margin-top: 5%;
+    width:90%;
+    margin-left: 5%;
+}
+
+.buttonStyle{
+    padding:3%;
+    border-radius: 15px;
+    margin: 5%;
+    width:90%;
+    background-color: rgb(31,20,42);
+    color: white;
+}
+
+.buttonStyle:hover{
+    padding:3%;
+    border-radius: 15px;
+    margin: 5%;
+    width:90%;
+    background-color: white;
+    color: rgb(31,20,42);
+}
+
+.signUpCenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userIcon{
+    margin-top: 2%;
+    width: 120px;
+}
