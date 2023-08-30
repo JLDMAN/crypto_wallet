@@ -1,0 +1,14 @@
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* border-style: solid; */
+    margin: 1%;
+    padding: 1%;
+}
+
+.footerElement{
+    /* border-style: solid; */
+    width: 20%;
+    margin: 0;
+}

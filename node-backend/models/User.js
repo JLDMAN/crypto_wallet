@@ -59,7 +59,6 @@ class User {
       } else {
         console.log("User found:", rows[0]);
         return rows[0];
-        
         // User found, return true
         return true;
       }

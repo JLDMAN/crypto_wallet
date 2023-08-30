@@ -1,0 +1,19 @@
+<div class="center">
+    <p-table [value]="rowData" [tableStyle]="{ 'max-width': '80rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th *ngFor="let header of headings">{{header}}</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td >{{product.coinName}}</td>
+                <td ><img src={{product.coinLogo}} width="20px"></td>
+                <td >{{product.currentPrice}}</td>
+                <td [ngClass]="{'green': product.priceChange >= 0.0, 'red': product.priceChange < 0.0}">{{product.priceChange}}</td>
+                <td >{{product.volume}}</td>
+                <td >{{product.marketCap}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

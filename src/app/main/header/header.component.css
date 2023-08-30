@@ -1,0 +1,37 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* border-style: solid; */
+    margin: 1%;
+    padding: 1%;
+}
+
+.navigationButtons{
+    width: 30%;
+    /* border-style: solid; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clickOfButtons{
+    width: 30%;
+    /* border-style: solid; */
+    display: flex;
+    align-items: right;
+    justify-content: right;
+}
+
+.buttonSpaceRight{
+    margin-right: 3%;
+}
+
+.buttonSpaceLeft{
+    margin-left: 3%;
+}
+
+.siteLogo{
+    width: 30%;
+    /* border-style: solid; */
+}

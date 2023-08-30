@@ -1,30 +1,32 @@
-<div class="signUpCard">
-    <div class="signUpCenter imageContainer">
-        <img src="../../assets/asset_6.png" class="userIcon"> 
-    </div>
-    <form [formGroup]="signUpForm">
+<div class="backGroundStyling">
+    <div class="signUpCard">
+        <div class="signUpCenter imageContainer">
+            <img src="../../assets/asset_6.png" class="userIcon"> 
+        </div>
+        <form [formGroup]="signUpForm">
+            <div class="signUpCenter">
+                <div class="dualFielClass">
+                    <input class="signUpField" pInputText pKeyFilter="int" placeholder="First Name" type="text" formControlName="firstName">
+                </div>
+                <div class="dualFielClass">
+                    <input class="signUpField" pInputText pKeyFilter="int" placeholder="Last Name" type="text" formControlName="lastName">
+                </div>
+            </div>
+            <div class="">
+                <input class="signUpField" pInputText pKeyFilter="int" placeholder="User email" type="text" formControlName="email">
+                <div class="password field p-fluid mt-4">
+                    <p-password  placeholder="User password" formControlName="password" [toggleMask]="true"></p-password>
+                </div>
+                <div class="errorMessage">
+                    <p-messages [(value)]="messages" [enableService]="false"></p-messages>
+                </div>            
+            </div>
+        </form>
+        <div>
+            <button class="buttonStyle" (click)="submitFormData()">Sign up</button>
+        </div>
         <div class="signUpCenter">
-            <div class="dualFielClass">
-                <input class="signUpField" pInputText pKeyFilter="int" placeholder="First Name" type="text" formControlName="firstName">
-            </div>
-            <div class="dualFielClass">
-                <input class="signUpField" pInputText pKeyFilter="int" placeholder="Last Name" type="text" formControlName="lastName">
-            </div>
+            <p>Already registered? <a routerLink="/login">Login</a></p>
         </div>
-        <div class="">
-            <input class="signUpField" pInputText pKeyFilter="int" placeholder="User email" type="text" formControlName="email">
-            <div class="password field p-fluid mt-4">
-                <p-password  placeholder="User password" formControlName="password" [toggleMask]="true"></p-password>
-            </div>
-            <div class="errorMessage">
-                <p-messages [(value)]="messages" [enableService]="false"></p-messages>
-            </div>            
-        </div>
-    </form>
-    <div>
-        <button class="buttonStyle" (click)="submitFormData()">Sign up</button>
-    </div>
-    <div class="signUpCenter">
-        <p>Already registered? <a routerLink="/login">Login</a></p>
     </div>
 </div>

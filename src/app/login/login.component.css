@@ -4,7 +4,7 @@
     width: 30%;
     margin-left: 35%;
     margin-top: 2%;
-    /* margin-bottom: 2%; */
+    margin-bottom: 2%;
 }
 
 .loginImageContainer {
@@ -75,4 +75,17 @@
     overflow: hidden;
     position: relative;
     }
+}
+
+.backGroundStyling {
+    background: linear-gradient(45deg, #ba3993, #1f142a);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999; /* Adjust the z-index as needed to layer it above other content */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }

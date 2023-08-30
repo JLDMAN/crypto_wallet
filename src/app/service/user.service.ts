@@ -15,14 +15,13 @@ export class UserService {
   }
 
   registerUser(firstName: any, lastName: any, password: any, email: any): Observable<any>{
-    
     const userData = {firstName, lastName, password, email};
     return this.http.post(`${this.apiUrl}/register`, userData);
   }
 
   loginUser(email: any, password: any){
-
     const userCredentials = {email, password};
+    const response = this.http.post(`${this.apiUrl}/login`, userCredentials);
     return this.http.post(`${this.apiUrl}/login`, userCredentials);
   }
 }

@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt'); // Import bcrypt library
+const jwt = require('jsonwebtoken');
 
 const userController = {
   async register(req, res) {
@@ -43,7 +44,7 @@ const userController = {
     const { email, password } = req.body;
   
     try {
-      // Check the user on the database
+      // Check for the user on the database
       const user = await User.findByEmail(email);
   
       if (!user) {
@@ -51,21 +52,30 @@ const userController = {
           error: 'Invalid credentials',
           status: 'false',
         });
-        return; // Exit the function early if the user is not found
+        // Exit the function early if the user is not found
+        return; 
       }
   
       // Compare the provided password with the stored hashed password
       const passwordMatch = await bcrypt.compare(password, user.password);
+      // const user = user.user_id;
   
       if (passwordMatch) {
         console.log("Password matched");
-        // Passwords match, you can proceed with the login logic
+
+        const token = jwt.sign({ userId: user.user_id }, 'tv7f7564dF%F^DDE65F75DR6CRfdc86ri', {
+          expiresIn: '0.1h', // Set the token expiration time
+        });
+
         res.status(200).json({
           message: 'User logged in successfully',
           status: "success",
+          token: token,
         });
+
       } else {
         console.log("Password does not match");
+
         // Passwords do not match
         res.status(401).json({
           error: 'Invalid credentials',

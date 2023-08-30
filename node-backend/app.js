@@ -1,27 +1,32 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { Pool } = require('pg'); // Import the pg library for PostgreSQL
-const userRoutes = require('./routes/userRoutes'); // Import your user routes
-const cors = require('cors'); // Import the 'cors' middleware
+// Import the pg library for PostgreSQL
+const { Pool } = require('pg'); 
+// Import your user routes
+const userRoutes = require('./routes/userRoutes'); 
+// Import the 'cors' middleware
+const cors = require('cors'); 
 
 const app = express();
-const PORT = process.env.PORT || 3000;// port server can be accessed on
+// port server can be accessed on
+const PORT = process.env.PORT || 3000;
 
 const corsOptions = {
-    origin: 'http://localhost:4200', // Replace with your frontend URL
+    // Accepting requests from this url
+    origin: 'http://localhost:4200', 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Pass cookies, if any
-    optionsSuccessStatus: 204, // No Content response for preflight requests
+    // Pass cookies, if any
+    credentials: true, 
+    // No Content response for preflight requests
+    optionsSuccessStatus: 204, 
 };
   
-app.use(cors(corsOptions)); // Use the 'cors' middleware with options
-  
-
+// Use the 'cors' middleware with options
+app.use(cors(corsOptions)); 
 // Middleware to convert incoming json data to be used as javascriptobject
 app.use(bodyParser.json());
-
-// Routes
-app.use('/api/users', userRoutes); // Use the user routes for /api/users
+// Use the user routes for /api/users
+app.use('/api/users', userRoutes); 
   
 // Start the server
 app.listen(PORT, () => {
