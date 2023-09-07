@@ -23,6 +23,30 @@ class User {
     }
   }
 
+  static async findByEmail(email) {
+    const findByEmailQuery = `
+    SELECT * FROM users
+    WHERE email = $1
+    `;
+
+    try {
+      const { rows } = await pool.query(findByEmailQuery, [email]);
+      // Check if any rows were returned
+      if (rows.length === 0) {
+        // User not found, return false
+        return false;
+      } else {
+        console.log("User found:", rows[0]);
+        // User found, return true
+        return rows[0];
+        return true;
+      }
+    } catch (error) {
+      console.error("Error finding user by email:", error);
+      throw error;
+    }
+  }
+
   static async addUser(firstName, lastName, email, password) {
     const addUserQuery = `
       INSERT INTO users (first_name, last_name, email, password)
@@ -37,35 +61,41 @@ class User {
         email,
         password,
       ]);
+
+      if (rows.length !== 0) {
+        return rows[0];
+      }
+
     } catch (error) {
       console.error("Error adding user:", error);
       throw error;
     }
   }
 
-  static async findByEmail(email) {
-    const findByEmailQuery = `
-    SELECT * FROM users
-    WHERE email = $1
-    `;
+  static async initiateFunds(user){
+    const initiateFundsQuery = `
+    INSERT INTO transactions (user_id, coin_id, transaction, transaction_id)
+    VALUES ($1, $2, $3, $4)
+  `;
 
-    try {
-      const { rows } = await pool.query(findByEmailQuery, [email]);
+  //base coin
+  const mmm = 'mmm'
+  // transaction information
+  const transactionKey = '_first_'
+  const transactionId = `${user}${transactionKey}${mmm}`;
+  const transaction=100000
 
-      // Check if any rows were returned
-      if (rows.length === 0) {
-        // User not found, return false
-        return false;
-      } else {
-        console.log("User found:", rows[0]);
-        return rows[0];
-        // User found, return true
-        return true;
-      }
-    } catch (error) {
-      console.error("Error finding user by email:", error);
-      throw error;
-    }
+  try {
+    const { rows } = await pool.query(initiateFundsQuery, [
+      user,
+      mmm,
+      transaction,
+      transactionId,
+    ]);
+  } catch (error) {
+    console.error("Error adding user:", error);
+    throw error;
+  }
   }
 }
 

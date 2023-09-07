@@ -22,6 +22,9 @@ import { PasswordModule } from 'primeng/password';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { MessagesModule } from 'primeng/messages';
 import { TableModule } from 'primeng/table';
+import { DropdownModule } from 'primeng/dropdown';
+import { ChartModule } from 'primeng/chart';
+import { PiechartComponent } from './holdings/piechart/piechart.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { TableModule } from 'primeng/table';
     TradeComponent,
     MarketoverviewComponent,
     AboutComponent,
-    MainComponent
+    MainComponent,
+    PiechartComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,9 @@ import { TableModule } from 'primeng/table';
     ConfirmPopupModule,
     MessagesModule,
     BrowserAnimationsModule,
-    TableModule
+    TableModule,
+    DropdownModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -41,5 +41,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Ignore all files in a specific directory
-config/
+# Ignore databases
+node-backend/config
+node-backend/node_modules

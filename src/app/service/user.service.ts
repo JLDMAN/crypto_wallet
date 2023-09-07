@@ -21,7 +21,7 @@ export class UserService {
 
   loginUser(email: any, password: any){
     const userCredentials = {email, password};
-    const response = this.http.post(`${this.apiUrl}/login`, userCredentials);
+    // const response = this.http.post(`${this.apiUrl}/login`, userCredentials);
     return this.http.post(`${this.apiUrl}/login`, userCredentials);
   }
 }

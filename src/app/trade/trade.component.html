@@ -1,3 +1,23 @@
-<div>
-    Trade
+<div class="center">
+    <div class="transactionCard">
+        <div class="coinSelection">
+            <form [formGroup]="transaction">
+                <div>
+                    <p>Buying: </p>
+                    <p-dropdown [options]="currentCoins" formControlName="buyCoin"></p-dropdown>
+                    <div>
+                        <input formControlName="buyVolume">
+                    </div>
+                </div>
+                <div>
+                    <p>Selling: </p>
+                    <p-dropdown [options]="allCoins"  formControlName="sellCoin"></p-dropdown>
+                    <div>
+                        <input formControlName="sellVolume">
+                    </div>
+                </div>
+            </form>
+            <p-button (onClick)="previewTrade()">Preview</p-button>
+        </div>
+    </div>
 </div>
