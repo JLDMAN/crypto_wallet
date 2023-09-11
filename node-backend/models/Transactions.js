@@ -17,7 +17,7 @@ class Transactions {
         return true;
       }
     } catch (error) {
-      console.error("Error finding user id", error);
+      console.error("Error finding user id", error);d
       throw error;
     }
   }

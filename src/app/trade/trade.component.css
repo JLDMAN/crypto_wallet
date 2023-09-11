@@ -1,5 +1,29 @@
 .center{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.split{
+    display: flex;
+}
+
+.transactionCard{
+    /* border-color: red; */
+    /* border-radius: 5px; */
+    /* border-style: solid; */
+    width: 60%;
+    margin-left: 20%;
+}
+
+.smallFont{
+    font-size: small;
+}
+
+.space{
+    margin-left: 3%;
+}
+
+.topSpace{
+    margin-top: 3%;
 }

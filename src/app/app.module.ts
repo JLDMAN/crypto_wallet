@@ -25,6 +25,7 @@ import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
 import { ChartModule } from 'primeng/chart';
 import { PiechartComponent } from './holdings/piechart/piechart.component';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { PiechartComponent } from './holdings/piechart/piechart.component';
     BrowserAnimationsModule,
     TableModule,
     DropdownModule,
-    ChartModule
+    ChartModule,
+    InputNumberModule
   ],
   providers: [],
   bootstrap: [AppComponent]

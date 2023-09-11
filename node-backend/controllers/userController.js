@@ -85,8 +85,6 @@ const userController = {
           email:user.email
         });
       } else {
-        console.log("Password does not match");
-
         // Passwords do not match
         res.status(401).json({
           error: "Invalid credentials",

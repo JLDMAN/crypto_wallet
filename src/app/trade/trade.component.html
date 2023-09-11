@@ -1,23 +1,43 @@
-<div class="center">
+<!-- <div class="center"> -->
     <div class="transactionCard">
         <div class="coinSelection">
-            <form [formGroup]="transaction">
+            <form [formGroup]="transaction" class="center">
                 <div>
-                    <p>Buying: </p>
-                    <p-dropdown [options]="currentCoins" formControlName="buyCoin"></p-dropdown>
-                    <div>
-                        <input formControlName="buyVolume">
+                    <div class="center">
+                        <div>
+                            <p>Buying: </p>
+                            <p-dropdown [options]="allCoins" formControlName="buyCoin" (ngModelChange)="sellUpdate()"></p-dropdown>
+                        </div>
+                        <div class="space">
+                            <p>Amount to buy</p>
+                            <input type="text" pInputText formControlName="buyVolume" (ngModelChange)="sellUpdate()">
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <p>Selling: </p>
-                    <p-dropdown [options]="allCoins"  formControlName="sellCoin"></p-dropdown>
-                    <div>
-                        <input formControlName="sellVolume">
+                    <div class="center">
+                        <div>
+                            <p>Selling: </p>
+                            <!--  [options]="coinId" -->
+                            <p-dropdown [options]="allCoins"  formControlName="sellCoin" (onChange)="showAvailableBalance()"></p-dropdown>
+                        </div>
+                        <div class="space">
+                            <p> Amount to sell</p>
+                            <input type="number" pInputText formControlName="sellVolume" (ngModelChange)="buyUpdate()">
+                            <!-- <p-inputNumber (ngModelChange)="buyUpdate()">{{howmuchMustSell}}</p-inputNumber> -->
+                        </div>
+                    </div>
+                    <div class="split">
+                        <div>
+                            <p class="smallFont">Available Amount: {{availableCoinAmount}}</p>
+                        </div>
+                        <div class="space">
+                            <p class="smallFont">Needed for swap: {{howmuchMustSell}}</p>
+                        </div>
                     </div>
                 </div>
             </form>
-            <p-button (onClick)="previewTrade()">Preview</p-button>
+            <div class="center topSpace"> 
+                <!-- <p-button (onClick)="previewTrade()">Preview Trade</p-button> -->
+            </div>
         </div>
     </div>
-</div>
+<!-- </div> -->

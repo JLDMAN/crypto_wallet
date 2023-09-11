@@ -79,7 +79,7 @@ class User {
   `;
 
   //base coin
-  const mmm = 'mmm'
+  const mmm = 'usd-coin'
   // transaction information
   const transactionKey = '_first_'
   const transactionId = `${user}${transactionKey}${mmm}`;

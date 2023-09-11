@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+// error handling:
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +24,6 @@ export class UserService {
 
   loginUser(email: any, password: any){
     const userCredentials = {email, password};
-    // const response = this.http.post(`${this.apiUrl}/login`, userCredentials);
     return this.http.post(`${this.apiUrl}/login`, userCredentials);
   }
 }
