@@ -1,6 +1,7 @@
+// System
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +27,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ChartModule } from 'primeng/chart';
 import { PiechartComponent } from './holdings/piechart/piechart.component';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { SidebarModule } from 'primeng/sidebar';
 
 @NgModule({
   declarations: [
@@ -55,7 +59,10 @@ import { InputNumberModule } from 'primeng/inputnumber';
     TableModule,
     DropdownModule,
     ChartModule,
-    InputNumberModule
+    InputNumberModule,
+    ConfirmDialogModule,
+    ToggleButtonModule,
+    SidebarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

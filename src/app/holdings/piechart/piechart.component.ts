@@ -2,6 +2,8 @@ import { TransactionService } from '../../service/transaction.service';
 import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from '../../service/shareddata.service';
 import { FormControl } from '@angular/forms';
+import { coinService } from 'src/app/service/coinapi.service';
+import { findIndex } from 'rxjs';
 
 @Component({
   selector: 'app-piechart',
@@ -10,9 +12,14 @@ import { FormControl } from '@angular/forms';
 })
 export class PiechartComponent {
 
-  // bind values recieved
+  // bind user values recieved
   coinId: any[] = [''];
-  coinAmount: any[] = [''];
+  coinAmount: any[] = [0];
+  // get api coin values
+  allCoins = [''];
+  allCoinsPrice = [0];
+  // usd value of coins
+  eachCoinWorth = [0];
   // use for pie chart
   data: any;
   options: any;
@@ -22,7 +29,8 @@ export class PiechartComponent {
 
   constructor(
     private sharedDataService: SharedDataService,
-    private transactionService: TransactionService) {
+    private transactions: TransactionService,
+    private coinservice: coinService) {
     this.receivedUser = this.sharedDataService.getUserData();
     this.receivedEmail = this.sharedDataService.getEmailData();
   }
@@ -35,9 +43,12 @@ export class PiechartComponent {
     // Initialize arrays to store data
     this.coinId = [];
     this.coinAmount = [];
+    this.allCoins = [];
+    this.allCoinsPrice = [];
+    this.eachCoinWorth = [];
 
     if (this.receivedUser && this.receivedEmail) {
-      this.transactionService.getListOfAssets(this.receivedUser, this.receivedEmail).subscribe((res: any) => {
+      this.transactions.getListOfAssets(this.receivedUser, this.receivedEmail).subscribe((res: any) => {
 
         for (let i = 0; i < res.transactions.totals.length; i++) {
           const item = res.transactions.totals[i];
@@ -45,8 +56,27 @@ export class PiechartComponent {
           this.coinAmount.push(item.net_transactions);
         }
 
+        this.transactions.getListOfAllCoins().subscribe(res => {
+          for (let j = 0; j < res.length; j++) {
+            // this.allCoins.push(res[j]);
+            this.allCoins.push(res[j].id);
+            this.allCoinsPrice.push(res[j].current_price);
+          }
+        });
+
+        for ( let k = 0; k < this.coinId.length; k ++){
+          const coinIndex = this.allCoins.findIndex(this.coinId[k]);
+          const coinValue = this.allCoinsPrice[coinIndex];
+          this.eachCoinWorth[k] = coinValue * this.coinAmount[k];
+        }
+
         this.drawPie()
       });
+
+
+
+
+
     } else {
       // Handle the case where receivedUser or receivedEmail is not available
     }
@@ -60,7 +90,7 @@ export class PiechartComponent {
       labels: this.coinId,
       datasets: [
         {
-          data: this.coinAmount,
+          data: this.eachCoinWorth,
           backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
           hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
         }

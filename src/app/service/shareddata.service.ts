@@ -1,4 +1,3 @@
-// shared-data.service.ts
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,26 +6,30 @@ import { Injectable } from '@angular/core';
 
 export class SharedDataService {
 
-    user: any = '';
-    email: any = '';
+    user: string = '';
+    email: string = '';
 
     // call user name from any component
     getUserData(){
-        return this.user;
+        // return this.user;
+        return localStorage.getItem('user');
     }
     
     // get user name from login and make callable
     setUserData(user: string) {
-        this.user = user;
+        // this.user = user;
+        localStorage.setItem('user', user);
     }
 
     // call user email from any component
     getEmailData(){
-        return this.email;
+        // return this.email;
+        return localStorage.getItem('email');
     }
 
     // get user email from login and make callable
     setEmailData(email: string) {
-        this.email = email;
+        // this.email = email;
+        localStorage.setItem('email', email);
     }
 }

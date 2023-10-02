@@ -26,6 +26,28 @@ const transactionController = {
       res.status(500).json({ error: "Internal Server Error" });
     }
   },
+
+  async tradePairs(req, res) {
+    const { user, email, buyCoin, howmuchCanBuy, sellCoin, sellCoinAmount } = req.body;
+
+    try {
+      const id = await Transactions.findId(user, email);
+
+      if (!id) {
+        return res.status(400).json({ error: "No user id matches" });
+      } else {
+        const swap = await Transactions.performSwap(id.user_id, buyCoin, howmuchCanBuy, sellCoin, sellCoinAmount);
+
+        res.status(201).json({
+          message: "User transactions executed",
+          status: swap,
+        });
+      }
+    } catch (error) {
+      console.error("Error performing swap:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
 };
 
 module.exports = transactionController;

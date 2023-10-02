@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
     } else {
       this.userService.loginUser(email, password).subscribe(
         (res: any) => {
-          // console.log("Login Successful: " + res);
         const user = res.user;
         const email = res.email;
 

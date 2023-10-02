@@ -27,3 +27,7 @@
 .topSpace{
     margin-top: 3%;
 }
+
+.warning{
+    color: red;
+}

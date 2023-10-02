@@ -11,6 +11,8 @@ router.post('/register', userController.register);
 router.post('/login', userController.login);
 // Routes for user transactions
 router.post('/checkBalances', transactionsController.checkBalances);
+// Route for user transactions
+router.post('/tradePairs', transactionsController.tradePairs);
 
 // Protected routes
 router.get('/getUserInfo', verifyToken, (req, res) => {

@@ -1,43 +1,44 @@
-<!-- <div class="center"> -->
-    <div class="transactionCard">
-        <div class="coinSelection">
-            <form [formGroup]="transaction" class="center">
+<div class="transactionCard">
+    <div class="coinSelection">
+        <form [formGroup]="transaction" class="center">
+            <div>
                 <div>
-                    <div class="center">
-                        <div>
-                            <p>Buying: </p>
-                            <p-dropdown [options]="allCoins" formControlName="buyCoin" (ngModelChange)="sellUpdate()"></p-dropdown>
-                        </div>
-                        <div class="space">
-                            <p>Amount to buy</p>
-                            <input type="text" pInputText formControlName="buyVolume" (ngModelChange)="sellUpdate()">
-                        </div>
+                    <div>
+                        <p>Buying: </p>
+                        <p-dropdown [options]="allCoins" formControlName="buyCoin" ngModel="bitcoin"></p-dropdown>
                     </div>
-                    <div class="center">
-                        <div>
-                            <p>Selling: </p>
-                            <!--  [options]="coinId" -->
-                            <p-dropdown [options]="allCoins"  formControlName="sellCoin" (onChange)="showAvailableBalance()"></p-dropdown>
-                        </div>
-                        <div class="space">
-                            <p> Amount to sell</p>
-                            <input type="number" pInputText formControlName="sellVolume" (ngModelChange)="buyUpdate()">
-                            <!-- <p-inputNumber (ngModelChange)="buyUpdate()">{{howmuchMustSell}}</p-inputNumber> -->
-                        </div>
+                    <div>
+                        <p>Pay with: </p>
+                        <p-dropdown [options]="allCoins" formControlName="sellCoin" (ngModelChange)="getAvailable()"></p-dropdown>
+                        <p>Avaliable: {{available}}</p>
                     </div>
-                    <div class="split">
-                        <div>
-                            <p class="smallFont">Available Amount: {{availableCoinAmount}}</p>
-                        </div>
-                        <div class="space">
-                            <p class="smallFont">Needed for swap: {{howmuchMustSell}}</p>
-                        </div>
+                    <div class="space">
+                        <input type="number" pInputText formControlName="sellVolume" (ngModelChange)="buyUpdate()" min="0">
+                        <p> ~ {{howmuchCanBuy}} {{buyCoin}} </p>
                     </div>
                 </div>
-            </form>
-            <div class="center topSpace"> 
-                <!-- <p-button (onClick)="previewTrade()">Preview Trade</p-button> -->
+                <div *ngIf="insufficientFunds">
+                    <p class="warning">Insufficient funds to make trade.</p>
+                </div>
+                <div *ngIf="selectCoins">
+                    <p class="warning">No coins selected to make trade with.</p>
+                </div>
+                <div *ngIf="zeroTradeAmount">
+                    <p class="warning">Trade value must not be blank or 0.</p>
+                </div>
             </div>
+        </form>
+        <div class="center topSpace">
+            <p-confirmPopup></p-confirmPopup>
+            <p-button (click)="confirm($event)" icon="pi pi-check" label="Confirm"></p-button>
         </div>
     </div>
-<!-- </div> -->
+</div>
+
+<div class="card flex justify-content-center">
+    <p-sidebar [(visible)]="sidebarVisible" [fullScreen]="true">
+        <div class="center topSpace">
+            <p>Success fully swapped {{sellCoinAmount}} {{sellCoin}} for {{howmuchCanBuy}} {{buyCoin}}</p>
+        </div>
+    </p-sidebar>
+</div>

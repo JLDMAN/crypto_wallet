@@ -17,7 +17,8 @@ class Transactions {
         return true;
       }
     } catch (error) {
-      console.error("Error finding user id", error);d
+      console.error("Error finding user id", error);
+      d;
       throw error;
     }
   }
@@ -36,10 +37,41 @@ class Transactions {
 
       if (rows.length !== 0) {
         return rows;
-        return true;
       }
     } catch (error) {
       console.error("Error finding transaction totals", error);
+      throw error;
+    }
+  }
+
+  static async performSwap(
+    userId,
+    buyCoin,
+    howmuchCanBuy,
+    sellCoin,
+    sellCoinAmount
+  ) {
+    const buyCoinsQuery = `
+      INSERT INTO transactions (user_id, coin_id, transaction, transaction_id)
+      VALUES ($1, $2, $3, NOW() || ' SOLD');
+    `;
+
+    const sellCoinsQuery = `
+    INSERT INTO transactions (user_id, coin_id, transaction, transaction_id)
+     VALUES ($1, $2, 0-(($3::numeric)), NOW() || ' BUAGHT');
+    `;
+
+    try {
+      const { rowCount: buyRowCount } = await pool.query(buyCoinsQuery, [userId, buyCoin, parseFloat(howmuchCanBuy)]);
+      const { rowCount: sellRowCount } = await pool.query(sellCoinsQuery, [userId, sellCoin, parseFloat(sellCoinAmount)]);
+      
+      if (buyRowCount > 0 && sellRowCount > 0) {
+        return "success";
+      } else {
+        return "failed";
+      }
+    } catch (error) {
+      console.error("Error could not perform transaction", error);
       throw error;
     }
   }

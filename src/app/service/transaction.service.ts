@@ -25,4 +25,17 @@ export class TransactionService {
   getListOfAllCoins(){
     return this.http.get<any>('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=15&page=1&sparkline=false&locale=en');
   }
+
+  makeTrade(receivedUser: any, receivedEmail: any, buyCoin: any, howmuchCanBuy: any, sellCoin: any, sellCoinAmount: any){
+    const loggedInUser = { 
+      user: receivedUser, 
+      email: receivedEmail, 
+      buyCoin, 
+      howmuchCanBuy, 
+      sellCoin, 
+      sellCoinAmount
+    };
+
+    return this.http.post<any>(`${this.apiUrl}/tradePairs`, loggedInUser);
+  }
 }

@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 // Import the pg library for PostgreSQL
-const { Pool } = require('pg'); 
+// const { Pool } = require('pg'); 
 // Import your user routes
 const userRoutes = require('./routes/userRoutes'); 
 // Import the 'cors' middleware
