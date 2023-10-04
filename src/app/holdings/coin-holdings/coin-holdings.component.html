@@ -1,0 +1,18 @@
+<div *ngFor="let coin of coinData" class="center">
+    <!-- <div>{{coin.id}}</div> -->
+    <div class="space">
+        <img style="width: 50px" src="{{coin.img}}">
+    </div>
+    <div class="space">
+        <p>Holding Value:</p>
+        <p>{{coin.value}}</p>
+    </div>
+    <div class="space">
+        <p>% Change:</p>
+        <p>{{coin.change}}</p>
+    </div>
+    <div class="space">
+        <p>Coin Price:</p>
+        <p>{{coin.coinPrice}}</p>
+    </div>
+</div>

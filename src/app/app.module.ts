@@ -30,6 +30,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { SidebarModule } from 'primeng/sidebar';
+import { CoinHoldingsComponent } from './holdings/coin-holdings/coin-holdings.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { SidebarModule } from 'primeng/sidebar';
     MarketoverviewComponent,
     AboutComponent,
     MainComponent,
-    PiechartComponent
+    PiechartComponent,
+    CoinHoldingsComponent
   ],
   imports: [
     BrowserModule,

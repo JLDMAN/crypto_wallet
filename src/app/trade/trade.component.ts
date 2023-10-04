@@ -94,7 +94,6 @@ export class TradeComponent implements OnInit {
         }
       });
     } else {
-      ;
     }
 
     const user = this.receivedUser;
@@ -109,14 +108,14 @@ export class TradeComponent implements OnInit {
           this.coinAmount.push(item.net_transactions);
         }
       });
-      console.log(this.coinId);
-      console.log(this.coinAmount);
+      // console.log(this.coinId);
+      // console.log(this.coinAmount);
     }
   }
 
   getAvailable(){
     this.available = 0;
-      console.log("coint to sell update triggered")
+      // console.log("coint to sell update triggered")
       const coinToSell = this.transaction.value.sellCoin;
       const coinToSellPosition = this.coinId.findIndex(item => item === coinToSell);
       this.available = this.coinAmount[coinToSellPosition];

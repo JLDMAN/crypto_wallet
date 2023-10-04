@@ -1,9 +1,6 @@
 .center{
     display: flex;
-    align-items: center;
+    text-align: center;
     justify-content: center;
-}
-
-.space{
-    margin: 2%;
+    margin: 1%;
 }

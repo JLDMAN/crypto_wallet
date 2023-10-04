@@ -1,4 +1,4 @@
-<div class="center">
+<div class="center" *ngIf="data">
     <p-table [value]="rowData" [tableStyle]="{ 'max-width': '80rem' }">
         <ng-template pTemplate="header">
             <tr>
@@ -16,4 +16,7 @@
             </tr>
         </ng-template>
     </p-table>
+</div>
+<div class="center" *ngIf="error">
+    <p>API call limit reached, check back in 5 minutes</p>
 </div>

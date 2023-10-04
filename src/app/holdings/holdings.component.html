@@ -1,3 +1,12 @@
-<div>
-    <app-piechart></app-piechart>
+<div class="center" *ngIf="data">
+    <div class="space">
+        <app-piechart [eachCoinWorth]="eachCoinWorthUSD" [coinId]="coinId"></app-piechart>
+    </div>
+    <div class="space">
+        <app-coin-holdings [coinPrice]="coinPrice" [value]="eachCoinWorthUSD" [img]="image" [change]="percentageChange"></app-coin-holdings>
+    </div>
 </div>
+<div class="center" *ngIf="error">
+    <p>API call limit reached, check back in 5 minutes</p>
+</div>
+
