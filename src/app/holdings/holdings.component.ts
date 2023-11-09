@@ -40,7 +40,13 @@ export class HoldingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAssetDistribution();
+    this.marketAPIData();
+    // this.getAssetDistribution();
+  }
+
+  marketAPIData(){
+    console.log("api call made from frontend");
+    this.coinservice.queryMarketAPI();
   }
 
   getAssetDistribution() {

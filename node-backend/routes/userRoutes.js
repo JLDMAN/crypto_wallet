@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
 const transactionsController = require('../controllers/transactionController');
+const apiController = require('../controllers/apiController');
 // middle ware
 const verifyToken = require('../middleware/verifyToken')
 
@@ -13,6 +14,8 @@ router.post('/login', userController.login);
 router.post('/checkBalances', transactionsController.checkBalances);
 // Route for user transactions
 router.post('/tradePairs', transactionsController.tradePairs);
+// Route for API data
+router.post('/storeAPIData', apiController.storeData);
 
 // Protected routes
 router.get('/getUserInfo', verifyToken, (req, res) => {

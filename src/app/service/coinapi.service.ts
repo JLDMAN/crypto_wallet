@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class coinService {
 
+  private apiUrl = 'http://localhost:3000/api/users';
+  
   constructor(
     private http: HttpClient,
   ){ 
@@ -14,5 +16,10 @@ export class coinService {
 
   queryForMarketData(){
     return this.http.get<any>('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=15&page=1&sparkline=false&locale=en');
+  }
+
+  queryMarketAPI(){
+    console.log("query made from service layer");
+    return this.http.post(`${this.apiUrl}/storeAPIData`, {});
   }
 }
